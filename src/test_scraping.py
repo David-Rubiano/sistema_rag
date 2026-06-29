@@ -1,4 +1,4 @@
-from scraper.scraper import  WebScraper, BBVAScraperStrategy
+from scraper.scraper import  WebScraper, MainScraperStrategy
 
 if __name__ == "__main__":
     urls_to_scrape = [        
@@ -53,5 +53,5 @@ if __name__ == "__main__":
     ]
 
     # Instanciamos el contexto pasándole la estrategia concreta
-    scraper = WebScraper(strategy=BBVAScraperStrategy())
+    scraper = WebScraper(strategy=MainScraperStrategy())
     scraper.execute_and_save(urls_to_scrape)

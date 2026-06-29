@@ -17,7 +17,7 @@ class ScraperStrategy(ABC):
 # ==========================================
 # 2. Estrategias Concretas
 # ==========================================
-class BBVAScraperStrategy(ScraperStrategy):
+class MainScraperStrategy(ScraperStrategy):
     def __init__(self):
         # Headers para simular un navegador real y evitar bloqueos básicos 403
         self.headers = {
