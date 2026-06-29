@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  bbva_rag_bot:
+    build: .
+    container_name: DAVIbank_rag_container
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      # Persistimos la carpeta de datos en la máquina local
+      - ./data:/app/data
+    restart: unless-stopped
