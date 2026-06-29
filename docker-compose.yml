@@ -1,7 +1,5 @@
-version: '3.8'
-
 services:
-  bbva_rag_bot:
+  davibank_rag_bot:
     build: .
     container_name: DAVIbank_rag_container
     ports:
