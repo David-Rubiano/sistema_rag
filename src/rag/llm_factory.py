@@ -43,8 +43,8 @@ class LLMFactory:
 class RAGPipeline:
     def __init__(self, vector_store, llm_provider="groq", memory_window=5):
         print(f"Inicializando RAG con {llm_provider} (Arquitectura LangGraph)...")
-        self.llm = LLMFactory.create_llm(llm_provider)
-        self.retriever = vector_store.as_retriever(search_kwargs={"k": 4})
+        self.llm = LLMFactory.create_llm(llm_provider) # Strategy: Inyección de dependencias para el LLM
+        self.retriever = vector_store.as_retriever(search_kwargs={"k": 4}) # Strategy: Recuperar 4 documentos relevantes
         
         # Multiplicamos por 2 porque un "intercambio" tiene pregunta (User) y respuesta (AI)
         self.memory_window = memory_window * 2 
@@ -71,7 +71,7 @@ class RAGPipeline:
             chat_history = state["messages"][-self.memory_window:]
             
             # Invocamos al LLM con las instrucciones + el historial acotado
-            response = self.llm.invoke([system_prompt] + chat_history)
+            response = self.llm.invoke([system_prompt] + chat_history) # Strategy llm aplicado
             
             return {"messages": [response]}
 
